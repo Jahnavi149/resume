@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Resume — Your Name</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <style>
+    :root {
+      --bg1: #0ea5e9;
+      --bg2: #6366f1;
+      --accent: #22d3ee;
+      --text: #0b1220;
+      --muted: #475569;
+      --card-bg: rgba(255,255,255,0.08);
+      --card-border: rgba(255,255,255,0.25);
+      --shadow: 0 20px 60px rgba(2, 6, 23, 0.25);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --text: #0f172a;
+        --muted: #475569;
+        --card-bg: rgba(255,255,255,0.7);
+        --card-border: rgba(15, 23, 42, 0.08);
+        --shadow: 0 22px 60px rgba(2, 6, 23, 0.12);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow: hidden;
+    }
+
+    .orb, .orb2 {
+      position: absolute; inset: 0;
+      filter: blur(60px);
+      opacity: 0.35;
+      pointer-events: none;
+      background:
+        radial-gradient(closest-side, rgba(255,255,255,0.9), transparent 70%) 10% 20% / 30% 40% no-repeat,
+        radial-gradient(closest-side, rgba(255,255,255,0.5), transparent 70%) 90% 80% / 25% 35% no-repeat;
+      animation: float 14s ease-in-out infinite;
+    }
+    .orb2 { filter: blur(80px); opacity: 0.25; animation: float2 18s ease-in-out infinite; }
+
+    .card {
+      position: relative;
+      width: min(92vw, 640px);
+      padding: 28px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      text-align: center;
+      animation: drop-in 700ms cubic-bezier(.2,.8,.2,1) both 120ms;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: var(--muted);
+      padding: 6px 10px; border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,.25);
+    }
+    .pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(34,211,238,.8);
+      animation: pulse 2.2s ease-out infinite;
+    }
+
+    h1 { margin: 14px 0 8px; font-size: clamp(22px, 3.2vw, 28px); }
+    p.lead { margin: 0 0 18px; color: var(--muted); font-size: clamp(14px, 2.2vw, 16px); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 18px; border-radius: 12px;
+      border: 1px solid var(--card-border);
+      background: white; color: #0f172a;
+      text-decoration: none; font-weight: 650;
+      transition: transform .18s ease, box-shadow .18s ease;
+      position: relative;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.18);
+    }
+    .btn::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.7) 50%, transparent 100%);
+      transform: translateX(-120%);
+      transition: transform .8s ease;
+      border-radius: inherit;
+      mix-blend-mode: overlay;
+    }
+    .btn:hover::after { transform: translateX(120%); }
+
+    @keyframes drop-in {
+      from { opacity: 0; transform: translateY(24px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-2%, -4%) scale(1.02); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(3%, 5%) scale(1.03); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,211,238,.7); }
+      70% { box-shadow: 0 0 0 14px rgba(34,211,238,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb" aria-hidden="true"></div>
+  <div class="orb2" aria-hidden="true"></div>
+
+  <main class="card">
+    <span class="badge"><span class="pulse"></span> Latest resume</span>
+    <h1>Jahnavi's Resume</h1>
+    <p class="lead">Click below to view the PDF</p>
+    <p>
+      <a class="btn" href="https://drive.google.com/file/d/1PW8b-KGIAlaFSKJf1M1GluhPQVgxY0lt/view?usp=sharing" target="_blank" rel="nofollow noopener noreferrer">
+        View Resume (PDF)
+      </a>
+    </p>
+  </main>
+</body>
+</html>
